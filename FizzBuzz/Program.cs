@@ -1,28 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace FizzBuzz
 {
     class Program
     {
-        //note none of this really matters considering test case
         static void Main(string[] args)
         {
+            FizzBuzzer fizzBuzzer = new FizzBuzzer();
 
-       //     string ans;
-         //   int   rangeStart,rangeEnd;
+            //Console.WriteLine(fizzBuzzer.FizzBuzzRange(8, 16));
 
-            Console.WriteLine("Running test cases..");
+            Console.WriteLine(fizzBuzzer.FizzBuzzRange(int.Parse(Console.ReadLine()), int.Parse(Console.ReadLine()))); //Win for readability!! But yeah.. we both know you're not interested in this class
 
-            
-            //I did a game loop here for no real reason, habit really, so deleted 
-            
-            //C++ equivlent to cin.get, pausing console, platform independant
-            Console.ReadLine();
-            Console.ReadKey();
         }
     }
 }

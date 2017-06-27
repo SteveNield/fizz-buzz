@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace FizzBuzz.Test
 {
@@ -20,18 +21,29 @@ namespace FizzBuzz.Test
         }
 
         [Test]
-        //[TestCase(1,5, "12fizz4buzz")] //my testing
+        //Your tests
         [TestCase(1, 100, "12fizz4buzzfizz78fizzbuzz11fizz1314fizzbuzz1617fizz19buzzfizz2223fizzbuzz26fizz2829fizzbuzz3132fizz34buzzfizz3738fizzbuzz41fizz4344fizzbuzz4647fizz49buzzfizz5253fizzbuzz56fizz5859fizzbuzz6162fizz64buzzfizz6768fizzbuzz71fizz7374fizzbuzz7677fizz79buzzfizz8283fizzbuzz86fizz8889fizzbuzz9192fizz94buzzfizz9798fizzbuzz")]
         [TestCase(5, 50, "buzzfizz78fizzbuzz11fizz1314fizzbuzz1617fizz19buzzfizz2223fizzbuzz26fizz2829fizzbuzz3132fizz34buzzfizz3738fizzbuzz41fizz4344fizzbuzz4647fizz49buzz")]
         [TestCase(17, 98, "17fizz19buzzfizz2223fizzbuzz26fizz2829fizzbuzz3132fizz34buzzfizz3738fizzbuzz41fizz4344fizzbuzz4647fizz49buzzfizz5253fizzbuzz56fizz5859fizzbuzz6162fizz64buzzfizz6768fizzbuzz71fizz7374fizzbuzz7677fizz79buzzfizz8283fizzbuzz86fizz8889fizzbuzz9192fizz94buzzfizz9798")]
-        [TestCase(98, 97, "9897")]// gives error as start range > end range
-        [TestCase(-214748365, 2147483650, "")]// input range is outside int32 bounds
-        //Additinal tests : do 2
+
+        [TestCase(0, 0, "fizzbuzz")] //Since 0 is divisible by every integer, I chose to leave it on the "fizzbuzz"
+
+        //Steve Tests
+        [TestCase(5, 1, "51")] // Start > End so it should yield an error
+        [TestCase(1, 9999999999, "")] //  End parameter is an int64 whereas an int32 is needed
+
+        //Additional Tests
+        [TestCase(1.2, 5, "")] //Parameters must be integers or else it yields an error
+        [TestCase(1, "h", "")] //Same thing as above, just a variation as exemple
+        [TestCase(1, null, "1")] //A null argument should yield an error
+        //[TestCase(int.MinValue, int.MaxValue, "")] //Doesn't even converge as the computational time is too long
+
+
         public void FizzBuzzRange_Returns_A_Correct_FizzBuzz_Result_For_A_Given_Range(int start, int end, string expectedResult)
         {
             var result = _fizzBuzzer.FizzBuzzRange(start, end);
+
             Assert.AreEqual(expectedResult, result);
-            //Would of added corrections from here or in FizzBuzzer after an assert to inform if errors
         }
     }
 }
